@@ -1,0 +1,231 @@
+.App {
+  header {
+    color: #ffffff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 48px;
+    text-align: center;
+    letter-spacing: 0.23em;
+    margin: 80px auto 10px;
+    
+    span{
+      color: #67DAF9;
+    }
+  }
+
+  .menu{
+    ul{
+      display: flex;
+      margin: 0 auto;
+      width: fit-content;
+      color: rgba($color: #ffffff, $alpha: 0.7);
+      font-size: 18px;
+
+      li{
+        margin: 0 10px;
+
+        .current-page{
+          color: #67DAF9;
+        }
+      }
+    }
+  }
+
+  .search {
+    position: relative;
+    width: 505px;
+    height: 48px;
+    margin: 15px auto;
+
+    input{
+      width: 505px;
+      height: 48px;
+      line-height: 48px;
+      display: block;
+      padding: 0 16px;
+      color: #36495D;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      background: #F4F4F4;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+      border-radius: 32px;
+    }
+
+    &.error{
+      input{
+        color: red;
+      }
+    }
+
+    &-icon{
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 24px;
+      height: 24px;
+      background-image: url('../img/search.svg');
+      background-size: contain;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  .slider-header{
+    text-transform: uppercase;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 30px;
+    line-height: 32px;
+    color: #A8A8A8;
+  }
+
+  .slider-item{
+    font-family: 'IBM Plex Sans', sans-serif;
+    cursor: pointer;
+
+    &_time{
+      color: #3F3F3F;
+      display: flex;
+      justify-content: space-between;
+
+      &-line{
+        width: 100%;
+        height: 1px;
+        background-color: #3F3F3F;
+        margin: auto 0 auto 10px;
+      }
+    }
+    
+    &_block{
+      height: 96px;
+      border-radius: 16px;
+      background-color: #F0F0F0;
+      margin: 10px 15px 0 0;
+      display: flex;
+      overflow: hidden;
+      color: #36495D;
+
+      &-left{
+        width: 65%;
+        height: 96px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        p{
+          text-align: center;
+          font-size: 8px;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        >div{
+          display: flex;
+          justify-content: space-between;
+          height: 70px;
+          flex-direction: column;
+        }
+
+        .main{
+          img{
+            width: 50px;
+          }
+        }
+        .temp{
+          p.number{
+            font-family: 'Comfortaa', cursive;
+            font-size: 44px;
+            text-align: center;
+
+            span{
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      &-right{
+        width: 35%;
+        height: 96px;
+        background-color: #FAFAFA;
+
+        >div{
+          display: flex;
+          justify-content: space-between;
+          height: 60px;
+          flex-direction: column;
+          margin: 18px auto;
+          width: 80%;
+
+          p{
+            font-family: 'Comfortaa', cursive;
+            font-size: 20px;
+          }
+
+          .humidity{
+            display: flex;
+            align-items: center;
+            
+            .img{
+              width: 16px;
+              height: 20px;
+              margin-right: 14px;
+              background-image: url('../img/humidity.svg');
+              background-size: contain;
+              display: block;
+            }
+          }
+          .wind{
+            display: flex;
+            align-items: center;
+
+            .img{
+              width: 20px;
+              height: 16px;
+              margin-right: 10px;
+              display: block;
+              background-image: url('../img/wind.svg');
+              background-size: contain;
+            }
+          }
+        }
+      }
+    }
+    &.active{
+      .slider-item{
+        &_time{
+          color: #7B7B7B;
+    
+          &-line{
+            background-color: #7B7B7B;
+          }
+        }
+
+        &_block{
+          background: linear-gradient(96.68deg, #67DAF9 1.86%, #5FCBE8 97.31%);
+          color: #FFFFFF;
+
+          &-right{
+            background-color: #58BFDB;
+            >div{
+              .wind{
+                .img{
+                  background-image: url('../img/wind-active.svg');
+                }
+              }
+              .humidity{
+                .img{
+                  background-image: url('../img/humidity-active.svg');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
