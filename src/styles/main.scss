@@ -1,4 +1,5 @@
 .App {
+  padding-bottom: 60px;
   header {
     color: #ffffff;
     text-align: center;
@@ -70,6 +71,28 @@
       outline: none;
       border: none;
       background-color: transparent;
+    }
+
+    .cities-autocomplete{
+      width: 100%;
+      z-index: 10;
+      position: absolute;
+      left: 0;
+      border-radius: 0 0 24px 24px;
+      overflow: hidden;
+      li{
+        width: 100%;
+        line-height: 35px;
+        font-size: 16px;
+        background-color: #F4F4F4;
+        color: #36495D;
+        padding: 0 16px;
+
+        &:hover{
+          background-color: #67DAF9;
+          color: #ffffff;
+        }
+      }
     }
   }
 

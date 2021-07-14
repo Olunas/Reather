@@ -2,18 +2,21 @@ import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import { GetWeather } from '../api/weather';
+import { getCities } from '../api/dadata';
 
 function Home() {
   const [weather, setWeather] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [inputValue, setInputValue] = useState('')
+  const [cities, setCities] = useState([])
 
   const UseWeather = (city) => {
     GetWeather(city).then((res)=> {
       setWeather(res)
       setInputValue(city)
       setLoading(false)
+      localStorage.setItem('city', city)
     }).catch(()=>{
       setError(true)
       setInputValue('City is not found')
@@ -27,6 +30,9 @@ function Home() {
       return
     }
     setInputValue(e.target.value)
+    getCities(e.target.value).then((res) => {
+      setCities(res)
+    })
   }
 
   const sendCity = (e) => {
@@ -48,8 +54,15 @@ function Home() {
     setWeather(temporaryObj)
   }
 
+  const selectCity = (e) => {
+    const text = e.target.outerText
+    setInputValue(text)
+    UseWeather(text)
+    setCities([])
+  }
+
   useEffect(()=> {
-    UseWeather('Moscow') 
+    UseWeather(localStorage.getItem('city') || 'Moscow') 
   }, [])
 
   return (
@@ -61,8 +74,16 @@ function Home() {
           onClick={changeInput}
           type="text" 
           id='search-input'
+          autoComplete='off'
         />
         <button type="submit" htmlFor='search-input' className="search-icon"></button>
+        <ul className="cities-autocomplete">
+          {cities.map((item, index) => (
+            <li onClick={selectCity} key={index}>
+              {item}
+            </li>
+          ))}
+        </ul>
       </form>
       {!loading && 
       <>

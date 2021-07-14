@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
 
 const fetchWeatherApi = async (uri) => {
   const key = 'aafed98d71332af97b2baf828535a950'
