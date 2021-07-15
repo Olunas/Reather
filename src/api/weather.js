@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getDirection, getDay } from './utils'
 
 const fetchWeatherApi = async (uri) => {
   const key = 'aafed98d71332af97b2baf828535a950'
@@ -17,26 +18,6 @@ export const getCurrentForsecast = async (city) => {
   return fetchWeatherApi(uri);
 }
 
-const getDay = function (day) {
-    var days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ];
-  const d = new Date(day);
-  const n = d.getDay();
-  return(days[n]);
-}
-
-const getDirection = function (angle) {
-  const directions = ['N', 'NW', 'W', 'SW', 'S', 'SE', 'E', 'NE']
-  return directions[Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8]
-}
-
 export const GetWeather = async (city) => {
   const forsecast = await getForsecast(city)
   const current = await getCurrentForsecast(city)
@@ -52,13 +33,11 @@ export const GetWeather = async (city) => {
   lastWeatherDate.setHours(23)
 
   forsecast.list.forEach(item =>{
-    const dateReplaced = item.dt_txt.replace(' ', 'T')
-    const date = new Date(dateReplaced)
+    const date = new Date(item.dt * 1000)
     if ( date < lastWeatherDate && date > (new Date()) ){
 
       // get date & time
-      const dateReplaced = item.dt_txt.replace(' ', 'T')
-      const date = new Date(dateReplaced)
+      const date = new Date(item.dt * 1000)
       const ho = new Intl.DateTimeFormat('ru', { hour: 'numeric' }).format(date);
       let mi = new Intl.DateTimeFormat('ru', { minute: 'numeric' }).format(date);
       if ( mi === "0" ){

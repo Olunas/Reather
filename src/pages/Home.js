@@ -102,7 +102,7 @@ function Home() {
               <div className="slider-item_block">
                 <div className="slider-item_block-left">
                   <div className="main">
-                    <img src={slide.icon} alt="icon" />
+                    <img src={slide.icon} alt="icon" className="img" />
                     <p>{slide.main}</p>
                   </div>
                   <div className="temp">
