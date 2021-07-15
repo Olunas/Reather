@@ -90,8 +90,20 @@ function Home() {
         <h2 className="slider-header">today</h2>
         <Swiper
           spaceBetween={26}
-          slidesPerView={4}
+          slidesPerView={1}
           centeredSlides={true}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            // when window width is >= 768px
+            945: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4
+            }
+          }}
         >
           {weather.today.map((slide, index) => (
             <SwiperSlide onClick={()=>{setActive(slide.date)}} key={index} className={slide.active === true ? 'slider-item active' : 'slider-item'}>
@@ -134,10 +146,21 @@ function Home() {
         <h2 className="slider-header">tomorrow</h2>
         <Swiper
           spaceBetween={26}
-          slidesPerView={4}
+          slidesPerView={1}
           centeredSlides={true}
           centeredSlidesBounds={true}
           initialSlide={4}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            945: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4
+            }
+          }}
         >
           {weather.tomorrow.map((slide, index) => (
             <SwiperSlide onClick={()=>{setActive(slide.date)}} key={index} className={slide.active === true ? 'slider-item active' : 'slider-item'}>
@@ -180,10 +203,21 @@ function Home() {
         <h2 className="slider-header">{weather.afterTomorrow[0].month} {weather.afterTomorrow[0].date.getDate()}, {weather.afterTomorrow[0].day}</h2>
         <Swiper
           spaceBetween={26}
-          slidesPerView={4}
+          slidesPerView={1}
           centeredSlides={true}
           centeredSlidesBounds={true}
           initialSlide={4}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            945: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4
+            }
+          }}
         >
           {weather.afterTomorrow.map((slide, index) => (
             <SwiperSlide onClick={()=>{setActive(slide.date)}} key={index} className={slide.active === true ? 'slider-item active' : 'slider-item'}>
@@ -226,10 +260,21 @@ function Home() {
         <h2 className="slider-header">{weather.after2days[0].month} {weather.after2days[0].date.getDate()}, {weather.after2days[0].day}</h2>
         <Swiper
           spaceBetween={26}
-          slidesPerView={4}
+          slidesPerView={1}
           centeredSlides={true}
           centeredSlidesBounds={true}
           initialSlide={4}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            945: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4
+            }
+          }}
         >
           {weather.after2days.map((slide, index) => (
             <SwiperSlide onClick={()=>{setActive(slide.date)}} key={index} className={slide.active === true ? 'slider-item active' : 'slider-item'}>
